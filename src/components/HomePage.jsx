@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import millify from 'millify';
 import { Typography, Row, Col, Statistic } from 'antd';
 import { useGetCryptosQuery } from '../services/cryptoApi';
 import { Link } from 'react-router-dom';
 import CryptoCurrencies from './CryptoCurrencies';
 import News from './News';
+import { useState } from 'react';
 const { Title } = Typography;
 const HomePage = () => {
-  const { data, isFetching } = useGetCryptosQuery();
+  const { data, isFetching } = useGetCryptosQuery(10);
   const globalStats = data?.data?.stats;
   console.log(globalStats);
   return (
@@ -52,7 +53,7 @@ const HomePage = () => {
           Latest Crypto News
         </Title>
         <Title level={3} className="show-more">
-          <Link to="/cryptocurrencies">show more</Link>
+          <Link to="/news">show more</Link>
         </Title>
       </div>
       <News simplified />
