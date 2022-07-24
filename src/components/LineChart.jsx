@@ -9,7 +9,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   const coinTimestamp = [];
   for (let i = 0; i < coinHistory?.data?.history?.length; i++) {
     var n = coinHistory?.data?.history?.length;
-    coinPrice.push(coinHistory.data.history[i].price);
+    coinPrice.push(coinHistory.data.history[n - 1 - i].price);
     var date = new Date(coinHistory.data.history[n - 1 - i].timestamp * 1000);
     coinTimestamp.push(
       date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear()
@@ -55,24 +55,6 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         </Col>
       </Row>
       <Line data={data} options={options} />
-      <Line
-        datasetIdKey="id"
-        data={{
-          labels: ['Jun', 'Jul', 'Aug'],
-          datasets: [
-            {
-              id: 1,
-              label: '',
-              data: [5, 6, 7]
-            },
-            {
-              id: 2,
-              label: '',
-              data: [3, 2, 1]
-            }
-          ]
-        }}
-      />
     </>
   );
 };

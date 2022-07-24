@@ -3,7 +3,6 @@ import React from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import {
   NavBar,
-  Exchange,
   HomePage,
   News,
   CryptoDetails,
@@ -26,8 +25,6 @@ function App() {
                 path="/cryptocurrencies"
                 element={<CryptoCurrencies />}
               />
-              <Route exact path="/exchanges" element={<Exchange />} />
-
               <Route exact path="/crypto/:coinId" element={<CryptoDetails />} />
               <Route exact path="/news" element={<News />} />
             </Routes>
@@ -40,7 +37,7 @@ function App() {
           </Typography.Title>
           <Space>
             <Link to="/">Home</Link>
-            <Link to="/exchanges">Exchanges</Link>
+
             <Link to="/news"> News</Link>
           </Space>
         </div>
